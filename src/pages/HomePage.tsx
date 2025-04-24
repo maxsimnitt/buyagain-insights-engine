@@ -1,14 +1,42 @@
-
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Users, ShoppingBag, LineChart, BarChart2, PieChart } from "lucide-react";
 
 const HomePage = () => {
+  const location = useLocation();
+  const heroRef = useRef<HTMLElement>(null);
+  const capabilitiesRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string };
+    if (state?.scrollTo) {
+      let targetRef;
+      switch (state.scrollTo) {
+        case 'hero':
+          targetRef = heroRef;
+          break;
+        case 'capabilities':
+          targetRef = capabilitiesRef;
+          break;
+        case 'contact':
+          targetRef = contactRef;
+          break;
+      }
+
+      if (targetRef?.current) {
+        targetRef.current.scrollIntoView({ behavior: 'smooth' });
+        // Clear the state to prevent repeated scrolling
+        window.history.replaceState({}, document.title);
+      }
+    }
+  }, [location]);
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-secondary text-white py-24">
+      <section ref={heroRef} className="bg-gradient-to-r from-primary to-secondary text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-6 xl:col-span-6">
@@ -43,7 +71,7 @@ const HomePage = () => {
       </section>
 
       {/* Feature Overview Section */}
-      <section className="py-16 bg-gray-50">
+      <section ref={capabilitiesRef} className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -192,7 +220,7 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary">
+      <section ref={contactRef} className="bg-primary">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             <span className="block">Ready to increase repeat purchases?</span>
