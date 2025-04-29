@@ -194,24 +194,11 @@ const HomePage = () => {
                   </div>
                 </div>
                 <div className="px-6 py-8">
-                  <div className="space-y-6">
-                    <div>
-                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                      <div className="mt-2 grid grid-cols-3 gap-4">
-                        <div className="h-24 bg-primary-light rounded"></div>
-                        <div className="h-24 bg-primary-light rounded"></div>
-                        <div className="h-24 bg-primary-light rounded"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                      <div className="mt-2 h-32 bg-primary-light rounded"></div>
-                    </div>
-                    <div>
-                      <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-                      <div className="mt-2 h-16 bg-primary-light rounded"></div>
-                    </div>
-                  </div>
+                  <img 
+                    src="/lovable-uploads/44f900e9-cb50-49cc-9ede-94b28dab9a19.png" 
+                    alt="Data visualization showing customer analytics" 
+                    className="w-full h-auto rounded-md shadow-sm"
+                  />
                 </div>
               </div>
             </div>
