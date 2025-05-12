@@ -1,26 +1,863 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>buyagain-insights-engine</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuyAgain.io - Customer Intelligence Platform</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.5;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    a {
+      color: #4361ee;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: #3a56d4;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary {
+      background-color: #4361ee;
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: #3a56d4;
+      color: white;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+      background-color: white;
+      border-bottom: 1px solid #f1f1f1;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      height: 4rem;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #4361ee;
+    }
+    
+    .nav-links {
+      display: none;
+    }
+    
+    .nav-button {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+    
+    .cta-buttons {
+      display: none;
+    }
+    
+    .mobile-menu {
+      display: block;
+    }
+    
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+        margin-left: 2.5rem;
+        gap: 2rem;
+      }
+      
+      .nav-link {
+        display: inline-flex;
+        padding: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #555;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease;
+      }
+      
+      .nav-link:hover {
+        color: #4361ee;
+        border-bottom-color: #4361ee;
+      }
+      
+      .cta-buttons {
+        display: flex;
+        gap: 0.75rem;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to right, #4361ee, #3f37c9);
+      color: white;
+      padding: 6rem 0;
+    }
+    
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-content p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .hero-image {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      animation: pulse 3s infinite;
+    }
+    
+    .hero-image-placeholder {
+      background-color: rgba(255, 255, 255, 0.2);
+      height: 16rem;
+      border-radius: 0.375rem;
+    }
+    
+    .hero-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .hero-image-card {
+      background-color: rgba(255, 255, 255, 0.2);
+      height: 6rem;
+      border-radius: 0.375rem;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+      
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+    }
+    
+    /* Features Section */
+    .features {
+      background-color: #f9fafb;
+      padding: 4rem 0;
+    }
+    
+    .features-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .features-header h2 {
+      font-size: 1.875rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 0.75rem;
+    }
+    
+    .features-header p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      border: 1px solid #f3f4f6;
+    }
+    
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      background-color: #edf2ff;
+      border-radius: 0.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: #4361ee;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    
+    .feature-card p {
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-link {
+      display: inline-flex;
+      align-items: center;
+      color: #4361ee;
+      font-size: 0.875rem;
+    }
+    
+    .feature-link svg {
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.25rem;
+    }
+    
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .features-header h2 {
+        font-size: 2.25rem;
+      }
+    }
+    
+    /* Value Proposition Section */
+    .value-prop {
+      padding: 4rem 0;
+    }
+    
+    .value-prop-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    
+    .value-prop-content h2 {
+      font-size: 1.875rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    
+    .value-prop-content p {
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .value-item {
+      display: flex;
+      margin-top: 1.5rem;
+    }
+    
+    .value-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background-color: #4361ee;
+      border-radius: 0.375rem;
+      margin-right: 1rem;
+    }
+    
+    .value-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: white;
+    }
+    
+    .value-text h4 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #111827;
+      margin-bottom: 0.25rem;
+    }
+    
+    .value-text p {
+      color: #6b7280;
+      margin-bottom: 0;
+    }
+    
+    .value-image {
+      background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .value-image-header {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1.5rem;
+      background-color: #f9fafb;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .browser-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+    
+    .dot-red {
+      background-color: #ef4444;
+    }
+    
+    .dot-yellow {
+      background-color: #f59e0b;
+    }
+    
+    .dot-green {
+      background-color: #10b981;
+    }
+    
+    .value-image-body {
+      padding: 2rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .value-prop-container {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .value-prop-content h2 {
+        font-size: 2.25rem;
+      }
+    }
+    
+    /* CTA Section */
+    .cta {
+      background-color: #4361ee;
+      padding: 3rem 0;
+    }
+    
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .cta-text {
+      margin-bottom: 2rem;
+    }
+    
+    .cta-text h2 {
+      font-size: 1.875rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cta-text span {
+      display: block;
+      color: #4cc9f0;
+      font-size: 1.875rem;
+      font-weight: 800;
+    }
+    
+    @media (min-width: 1024px) {
+      .cta-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+      
+      .cta-text {
+        margin-bottom: 0;
+      }
+      
+      .cta-text h2 {
+        font-size: 2.25rem;
+      }
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #f9fafb;
+      padding: 3rem 0;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .footer-brand {
+      margin-bottom: 2rem;
+    }
+    
+    .footer-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #4361ee;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-description {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .social-link {
+      color: #9ca3af;
+      transition: color 0.2s ease;
+    }
+    
+    .social-link:hover {
+      color: #6b7280;
+    }
+    
+    .social-link svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    .footer-column {
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-column ul {
+      list-style-type: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 1rem;
+    }
+    
+    .footer-column ul li a {
+      color: #6b7280;
+      transition: color 0.2s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: #4361ee;
+    }
+    
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+    }
+    
+    .footer-copyright {
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-links {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .footer-container {
+        grid-template-columns: 1fr 2fr;
+      }
+      
+      .footer-bottom {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="nav-left">
+        <a href="#hero" class="logo">BuyAgain.io</a>
+        <div class="nav-links">
+          <a href="#hero" class="nav-link">Home</a>
+          <a href="#capabilities" class="nav-link">Solutions</a>
+          <a href="#contact" class="nav-link">Contact Us</a>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-outline" style="border-color: #4361ee; color: #4361ee;">Login</a>
+          <a href="#contact" class="btn btn-primary">Request Trial</a>
+        </div>
+        <button class="mobile-menu nav-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <meta property="og:title" content="buyagain-insights-engine" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1>
+          <span>A Customer Intelligence</span>
+          <span>Platform For Ecommerce</span>
+        </h1>
+        <p>
+          Increasing repeatable purchases through data, insight, action, and profit. 
+          Give us a try, what do you have to lose? Get the most out of your existing inventory.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary" style="background-color: white; color: #4361ee;">Request a Free Trial</a>
+          <a href="#" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-placeholder"></div>
+        <div class="hero-image-grid">
+          <div class="hero-image-card"></div>
+          <div class="hero-image-card"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+  <!-- Features Section -->
+  <section id="capabilities" class="features">
+    <div class="container">
+      <div class="features-header">
+        <h2>Transforming Customer Data Into Revenue</h2>
+        <p>Our platform helps you understand, predict, and influence customer behavior.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M7 16l4-4 4 4 5-5"/>
+              <path d="M8 9h.01"/>
+            </svg>
+          </div>
+          <h3>Forecast Revenue</h3>
+          <p>Predict individual customers' next purchase values and categories to estimate future demand and revenue.</p>
+          <a href="#" class="feature-link">
+            Learn more 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Target Customers</h3>
+          <p>Identify high-potential customers and strategically position your best offers to specific segments.</p>
+          <a href="#" class="feature-link">
+            Learn more 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <h3>Optimize Inventory</h3>
+          <p>Ensure your top 20% of customers always have access to their desired products through predictive inventory.</p>
+          <a href="#" class="feature-link">
+            Learn more 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Value Proposition -->
+  <section class="value-prop">
+    <div class="container value-prop-container">
+      <div class="value-prop-content">
+        <h2>Turn Data Into Actionable Insights</h2>
+        <p>
+          BuyAgain.io helps you understand your customers better than ever before. 
+          Our platform analyzes purchase patterns, predicts future behavior, and provides 
+          actionable recommendations to increase repeat purchases and maximize customer lifetime value.
+        </p>
+        
+        <div class="value-item">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="m19 9-5 5-4-4-3 3"/>
+            </svg>
+          </div>
+          <div class="value-text">
+            <h4>Increase Repeat Purchases</h4>
+            <p>Identify patterns that lead to repeat purchases and optimize accordingly.</p>
+          </div>
+        </div>
+        
+        <div class="value-item">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 20V10"/>
+              <path d="M12 20V4"/>
+              <path d="M6 20v-6"/>
+            </svg>
+          </div>
+          <div class="value-text">
+            <h4>Optimize Pricing</h4>
+            <p>Set prices that maximize long-term customer lifetime value and revenue.</p>
+          </div>
+        </div>
+        
+        <div class="value-item">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <path d="M12 17h.01"/>
+            </svg>
+          </div>
+          <div class="value-text">
+            <h4>Enhance Acquisition</h4>
+            <p>Measure the effectiveness of acquisition channels and optimize marketing spend.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="value-image">
+        <div class="value-image-header">
+          <div class="browser-dot dot-red"></div>
+          <div class="browser-dot dot-yellow"></div>
+          <div class="browser-dot dot-green"></div>
+        </div>
+        <div class="value-image-body">
+          <img src="/lovable-uploads/44f900e9-cb50-49cc-9ede-94b28dab9a19.png" alt="Data visualization showing customer analytics" style="width: 100%; height: auto; border-radius: 0.375rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="cta">
+    <div class="container cta-container">
+      <div class="cta-text">
+        <h2>Ready to increase repeat purchases?</h2>
+        <span>Start your free trial today.</span>
+      </div>
+      <a href="#" class="btn btn-primary" style="background-color: white; color: #4361ee;">Request a Free Trial</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">BuyAgain.io</div>
+        <p class="footer-description">
+          A Customer Intelligence Platform For Ecommerce Retailers and Wholesalers: 
+          Increasing Repeatable Purchases Data, Insight, Action, Profit.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Forecasting</a></li>
+            <li><a href="#">Recommendations</a></li>
+            <li><a href="#">Inventory Management</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>More Solutions</h3>
+          <ul>
+            <li><a href="#">Customer Targeting</a></li>
+            <li><a href="#">Channel Optimization</a></li>
+            <li><a href="#">Pricing Optimization</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2023 BuyAgain.io. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
 </html>
