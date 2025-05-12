@@ -59,75 +59,79 @@ const ContactPage = () => {
           {!submitted ? (
             <Card>
               <CardHeader>
-                <CardTitle>Trial Request</CardTitle>
+                <CardTitle>Trial Request Form</CardTitle>
                 <CardDescription>
-                  Provide your information and we'll contact you to get started.
+                  Tell us about your business and we'll show you how BuyAgain.io can help boost your customer retention and sales.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
+                      <Label htmlFor="firstName">First Name *</Label>
                       <Input
                         id="firstName"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
+                        placeholder="Your first name"
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
+                      <Label htmlFor="lastName">Last Name *</Label>
                       <Input
                         id="lastName"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
+                        placeholder="Your last name"
                         required
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">Business Email *</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
+                      placeholder="you@company.com"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="companyName">Company Name</Label>
+                    <Label htmlFor="companyName">Company Name *</Label>
                     <Input
                       id="companyName"
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleChange}
+                      placeholder="Your company name"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="website">Website</Label>
+                    <Label htmlFor="website">Company Website</Label>
                     <Input
                       id="website"
                       name="website"
                       value={formData.website}
                       onChange={handleChange}
-                      placeholder="https://"
+                      placeholder="https://yourcompany.com"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Tell us about your business needs</Label>
+                    <Label htmlFor="message">What are your main business challenges?</Label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="What challenges are you facing with customer retention and repeat purchases?"
+                      placeholder="Tell us about your challenges with customer retention and repeat purchases"
                     />
                   </div>
                   <Button
@@ -135,7 +139,7 @@ const ContactPage = () => {
                     className="w-full"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Submitting..." : "Request Trial"}
+                    {isSubmitting ? "Processing..." : "Request Your Free Trial"}
                   </Button>
                 </form>
               </CardContent>
@@ -148,10 +152,10 @@ const ContactPage = () => {
                     <CheckCircle className="h-6 w-6 text-green-600" />
                   </div>
                   <h2 className="mt-4 text-2xl font-bold text-gray-900">
-                    Thank you for your interest!
+                    Trial Request Received!
                   </h2>
                   <p className="mt-2 text-lg text-gray-500">
-                    We've received your trial request and will be in touch soon.
+                    Thanks for your interest in BuyAgain.io. Our team will contact you within 24 hours to set up your free trial.
                   </p>
                   <p className="mt-6 text-sm text-gray-500">
                     A confirmation email has been sent to {formData.email}
@@ -168,14 +172,14 @@ const ContactPage = () => {
 
           <div className="mt-8 text-center">
             <p className="text-gray-500">
-              Prefer to email us directly?{" "}
+              Have questions about our trial?{" "}
               <a
-                href="mailto:dio@buyagain.io"
+                href="mailto:trials@buyagain.io"
                 className="text-primary hover:text-primary-hover font-medium"
               >
                 <span className="inline-flex items-center">
                   <Mail className="h-4 w-4 mr-1" />
-                  dio@buyagain.io
+                  trials@buyagain.io
                 </span>
               </a>
             </p>
