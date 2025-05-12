@@ -1,7 +1,13 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -46,25 +52,47 @@ const Navbar = () => {
             <Button asChild className="hidden md:block">
               <Link to="/contact">Request Trial</Link>
             </Button>
-            <div className="md:hidden flex items-center">
-              <Button variant="ghost" size="icon" className="-mr-1">
-                <span className="sr-only">Open menu</span>
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </Button>
-            </div>
+            
+            {/* Mobile Menu */}
+            <Sheet>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <span className="sr-only">Open menu</span>
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[80%] sm:w-[385px]">
+                <div className="flex flex-col py-6 space-y-4">
+                  <button 
+                    onClick={() => handleNavigation('hero')} 
+                    className="text-lg font-medium text-gray-700 hover:text-primary text-left px-2 py-2"
+                  >
+                    Home
+                  </button>
+                  <button 
+                    onClick={() => handleNavigation('capabilities')} 
+                    className="text-lg font-medium text-gray-700 hover:text-primary text-left px-2 py-2"
+                  >
+                    Solutions
+                  </button>
+                  <button 
+                    onClick={() => handleNavigation('contact')} 
+                    className="text-lg font-medium text-gray-700 hover:text-primary text-left px-2 py-2"
+                  >
+                    Contact Us
+                  </button>
+                  
+                  <div className="pt-4 border-t border-gray-200">
+                    <Button asChild variant="outline" className="w-full mb-3">
+                      <Link to="/login">Login</Link>
+                    </Button>
+                    <Button asChild className="w-full">
+                      <Link to="/contact">Request Trial</Link>
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

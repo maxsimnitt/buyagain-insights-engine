@@ -52,9 +52,6 @@ const HomePage = () => {
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100">
                   <Link to="/contact">Request a Free Trial</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                  <Link to="/features/forecasting">Learn More</Link>
-                </Button>
               </div>
             </div>
             <div className="mt-12 lg:mt-0 lg:col-span-6 xl:col-span-6">
