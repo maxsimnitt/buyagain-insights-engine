@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0 flex items-center">
               <span className="text-xl font-bold text-primary">BuyAgain.io</span>
             </Link>
-            <div className="ml-10 flex space-x-8">
+            <div className="hidden md:flex ml-10 space-x-8">
               <button 
                 onClick={() => handleNavigation('hero')} 
                 className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-primary"
