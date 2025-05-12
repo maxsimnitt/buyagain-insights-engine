@@ -8,7 +8,6 @@ import MainLayout from "./components/MainLayout";
 import DashboardLayout from "./components/DashboardLayout";
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
-import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import NotFound from "./pages/NotFound";
 
@@ -26,9 +25,6 @@ const App = () => (
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Route>
-          
-          {/* Auth Routes */}
-          <Route path="/login" element={<LoginPage />} />
           
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<DashboardLayout />}>
