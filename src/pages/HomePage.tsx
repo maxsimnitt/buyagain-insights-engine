@@ -61,7 +61,7 @@ const HomePage = () => {
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-9 xl:col-span-9 w-3/4">
+            <div className="lg:col-span-9 xl:col-span-9 w-full">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
                 <span className="block">A Customer Intelligence</span>
                 <span className="block mt-1">Platform For Ecommerce</span>
