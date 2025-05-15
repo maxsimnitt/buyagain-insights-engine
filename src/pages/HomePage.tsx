@@ -1,7 +1,9 @@
+
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Users, ShoppingBag, LineChart, BarChart2, PieChart } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const HomePage = () => {
   const location = useLocation();
@@ -35,9 +37,29 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section ref={heroRef} className="bg-gradient-to-r from-primary to-secondary text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Video Background */}
+      <section ref={heroRef} className="relative overflow-hidden text-white py-24">
+        {/* Video Container with 16:9 Aspect Ratio */}
+        <div className="absolute inset-0 -mx-16 z-0">
+          <AspectRatio ratio={16/9} className="h-full w-full">
+            <div className="w-full h-full">
+              <iframe 
+                src="https://www.youtube.com/embed/JuWm_EizoW8?autoplay=1&mute=1&controls=0&loop=1&playlist=JuWm_EizoW8&showinfo=0&rel=0" 
+                className="absolute inset-0 w-full h-full object-cover"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+                frameBorder="0"
+                title="Background Video"
+              />
+            </div>
+          </AspectRatio>
+        </div>
+        
+        {/* Diagonal Gradient Overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#00000080] to-transparent"></div>
+        
+        {/* Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-6 xl:col-span-6">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
@@ -54,14 +76,8 @@ const HomePage = () => {
                 </Button>
               </div>
             </div>
-            <div className="mt-12 lg:mt-0 lg:col-span-6 xl:col-span-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden p-6 animate-pulse-slow">
-                <div className="bg-white/20 h-64 rounded-md"></div>
-                <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div className="bg-white/20 h-24 rounded-md"></div>
-                  <div className="bg-white/20 h-24 rounded-md"></div>
-                </div>
-              </div>
+            <div className="lg:col-span-6 xl:col-span-6">
+              {/* Empty space where the placeholder was */}
             </div>
           </div>
         </div>
