@@ -202,22 +202,11 @@ const HomePage = () => {
             </div>
             
             <div className="mt-10 lg:mt-0 lg:col-span-6">
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="px-6 py-8 bg-gray-50 border-b border-gray-100">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="px-6 py-8">
-                  <img 
-                    src="/lovable-uploads/44f900e9-cb50-49cc-9ede-94b28dab9a19.png" 
-                    alt="Data visualization showing customer analytics" 
-                    className="w-full h-auto rounded-md shadow-sm"
-                  />
-                </div>
-              </div>
+              <img 
+                src="/lovable-uploads/44f900e9-cb50-49cc-9ede-94b28dab9a19.png" 
+                alt="Data visualization showing customer analytics" 
+                className="w-full h-auto rounded-md shadow-lg"
+              />
             </div>
           </div>
         </div>
