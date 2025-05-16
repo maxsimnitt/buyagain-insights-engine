@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -42,7 +41,7 @@ const HomePage = () => {
       {/* Hero Section with Video Background */}
       <section ref={heroRef} className="relative overflow-hidden text-white py-24">
         {/* Video Container with mobile-responsive sizing */}
-        <div className={`absolute inset-0 ${isMobile ? '-mx-32' : '-mx-16'} z-0`}>
+        <div className={`absolute ${isMobile ? 'inset-0 -top-10 -mx-32' : 'inset-0 -mx-16'} z-0`}>
           <AspectRatio 
             ratio={16/9} 
             className={`${isMobile ? 'h-screen w-auto min-w-[200%]' : 'h-full w-full'}`}
