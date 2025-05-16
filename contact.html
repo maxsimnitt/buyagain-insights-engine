@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - BuyAgain.io</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/contact.css" />
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-content">
+            <a href="/" class="logo">BuyAgain.io</a>
+            <div class="nav-links desktop-only">
+              <a href="/" class="nav-link">Home</a>
+              <a href="/#capabilities" class="nav-link">Solutions</a>
+              <a href="/#contact" class="nav-link">Contact Us</a>
+            </div>
+            <div class="nav-actions">
+              <a href="/contact.html" class="button primary-button desktop-only">Request Trial</a>
+              
+              <!-- Mobile Menu Button -->
+              <button class="mobile-menu-button mobile-only">
+                <span class="sr-only">Open menu</span>
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-container">
+          <div class="mobile-menu-header">
+            <button class="mobile-menu-close">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="mobile-menu-content">
+            <a href="/" class="mobile-nav-link">Home</a>
+            <a href="/#capabilities" class="mobile-nav-link">Solutions</a>
+            <a href="/#contact" class="mobile-nav-link">Contact Us</a>
+            <a href="/contact.html" class="button primary-button mobile-button">Request Trial</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main>
+        <div class="contact-page">
+          <div class="container">
+            <div class="contact-header">
+              <h1 class="contact-title">Request A Free Trial</h1>
+              <p class="contact-description">
+                Fill out the form below and we'll get back to you within 24 hours to set up your trial account.
+              </p>
+            </div>
+
+            <div class="contact-form-container">
+              <div class="contact-card" id="contact-card">
+                <div class="contact-card-header">
+                  <h2 class="contact-card-title">Trial Request Form</h2>
+                  <p class="contact-card-description">
+                    Tell us about your business and we'll show you how BuyAgain.io can help boost your customer retention and sales.
+                  </p>
+                </div>
+                <div class="contact-card-content">
+                  <form id="contact-form" class="contact-form">
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label for="firstName" class="form-label">First Name *</label>
+                        <input
+                          id="firstName"
+                          name="firstName"
+                          class="form-input"
+                          placeholder="Your first name"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name *</label>
+                        <input
+                          id="lastName"
+                          name="lastName"
+                          class="form-input"
+                          placeholder="Your last name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="email" class="form-label">Email *</label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        class="form-input"
+                        placeholder="your.email@example.com"
+                        required
+                      />
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="companyName" class="form-label">Company Name *</label>
+                      <input
+                        id="companyName"
+                        name="companyName"
+                        class="form-input"
+                        placeholder="Your company name"
+                        required
+                      />
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="website" class="form-label">Website</label>
+                      <input
+                        id="website"
+                        name="website"
+                        class="form-input"
+                        placeholder="https://your-website.com"
+                      />
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="message" class="form-label">Tell us about your business</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        class="form-textarea"
+                        placeholder="What are your main challenges with customer retention? How many products do you sell?"
+                        rows="4"
+                      ></textarea>
+                    </div>
+                    
+                    <div class="form-footer">
+                      <button type="submit" class="button primary-button form-submit" id="submit-button">
+                        Request Trial
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+              <div class="success-message" id="success-message">
+                <div class="success-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <h2 class="success-title">Your trial request has been submitted!</h2>
+                <p class="success-description">
+                  Thank you for your interest in BuyAgain.io. We'll be in touch with you shortly to set up your trial account.
+                </p>
+                <a href="/" class="button primary-button success-button">
+                  Return to Home
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-brand">
+              <div class="footer-logo">BuyAgain.io</div>
+              <p class="footer-description">
+                A Customer Intelligence Platform For Ecommerce Retailers and Wholesalers: 
+                Increasing Repeatable Purchases Data, Insight, Action, Profit.
+              </p>
+              <div class="social-links">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="footer-links-container">
+              <div class="footer-links-group">
+                <div class="footer-links-column">
+                  <h3 class="footer-links-title">Solutions</h3>
+                  <ul class="footer-links">
+                    <li><a href="/features/forecasting.html" class="footer-link">Forecasting</a></li>
+                    <li><a href="/features/recommendations.html" class="footer-link">Recommendations</a></li>
+                    <li><a href="/features/inventory.html" class="footer-link">Inventory Management</a></li>
+                  </ul>
+                </div>
+                <div class="footer-links-column">
+                  <h3 class="footer-links-title">More Solutions</h3>
+                  <ul class="footer-links">
+                    <li><a href="/features/targeting.html" class="footer-link">Customer Targeting</a></li>
+                    <li><a href="/features/acquisition.html" class="footer-link">Channel Optimization</a></li>
+                    <li><a href="/features/pricing.html" class="footer-link">Pricing Optimization</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="footer-links-group">
+                <div class="footer-links-column">
+                  <h3 class="footer-links-title">Company</h3>
+                  <ul class="footer-links">
+                    <li><a href="/about.html" class="footer-link">About</a></li>
+                    <li><a href="/blog.html" class="footer-link">Blog</a></li>
+                    <li><a href="/contact.html" class="footer-link">Contact Us</a></li>
+                  </ul>
+                </div>
+                <div class="footer-links-column">
+                  <h3 class="footer-links-title">Legal</h3>
+                  <ul class="footer-links">
+                    <li><a href="/privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="/terms.html" class="footer-link">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p class="copyright">&copy; 2023 BuyAgain.io. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="/scripts.js"></script>
+    <script src="/contact.js"></script>
+  </body>
+</html>
