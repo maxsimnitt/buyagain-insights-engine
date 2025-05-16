@@ -4,12 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Users, ShoppingBag, LineChart, BarChart2, PieChart } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const HomePage = () => {
   const location = useLocation();
   const heroRef = useRef<HTMLElement>(null);
   const capabilitiesRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const state = location.state as { scrollTo?: string };
@@ -39,13 +41,16 @@ const HomePage = () => {
     <div>
       {/* Hero Section with Video Background */}
       <section ref={heroRef} className="relative overflow-hidden text-white py-24">
-        {/* Video Container with 16:9 Aspect Ratio */}
-        <div className="absolute inset-0 -mx-16 z-0">
-          <AspectRatio ratio={16/9} className="h-full w-full">
+        {/* Video Container with mobile-responsive sizing */}
+        <div className={`absolute inset-0 ${isMobile ? '-mx-32' : '-mx-16'} z-0`}>
+          <AspectRatio 
+            ratio={16/9} 
+            className={`${isMobile ? 'h-screen w-auto min-w-[200%]' : 'h-full w-full'}`}
+          >
             <div className="w-full h-full">
               <iframe 
                 src="https://www.youtube.com/embed/JuWm_EizoW8?autoplay=1&mute=1&controls=0&loop=1&playlist=JuWm_EizoW8&showinfo=0&rel=0" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className={`absolute inset-0 w-full h-full object-cover`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
                 frameBorder="0"
