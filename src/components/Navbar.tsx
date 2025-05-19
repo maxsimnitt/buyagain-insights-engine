@@ -23,9 +23,11 @@ const Navbar = () => {
           <div className="flex flex-1 items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img 
-                src="/lovable-uploads/48d2cf8c-e3ad-47b1-948f-1d3efa8134d0.png" 
+                src="/lovable-uploads/3e6f7fc6-7e1e-418e-87f8-810097b4ef08.png" 
                 alt="BuyAgain.io Logo" 
-                className="h-8 w-8 mr-2" 
+                className="h-7 w-7 mr-2" 
+                width="28"
+                height="28"
               />
               <span className="text-xl font-bold text-primary">BuyAgain.io</span>
             </Link>
